@@ -52,7 +52,7 @@
 
   .display {
     background-color: #222;
-    color: #0f0;
+    color: rgb(255, 255, 255);
     font-family: 'Courier New', monospace;
     font-size: 2em;
     padding: 12px;
@@ -89,6 +89,6 @@
   }
 
   .igual {
-    background-color: #27ae60;
+    background-color: #ffffff;
     color: white;
   }

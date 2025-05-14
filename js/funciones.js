@@ -91,6 +91,15 @@ document.addEventListener('DOMContentLoaded', () => {
             calcular();
         }
     }
+    //para borrar el ultimo digito
+    function backspace() {
+    if (entradaActual.length > 1) {
+        entradaActual = entradaActual.slice(0, -1);
+    } else {
+        entradaActual = '0';
+    }
+    updateDisplay();
+}
     
     // para asignar los numeros a los botones
     botones.forEach(btn => {
@@ -111,7 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }else if (id === 'igual') {
         btn.addEventListener('click', () => {
             igual();
-        });}
+        });
+        } else if (id === 'borrar') {
+        btn.addEventListener('click', () => {
+            backspace();
+        });
+        }
 
     });
 
