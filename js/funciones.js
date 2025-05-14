@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const botones = document.querySelectorAll('.botones button');
 
     let entradaActual = '0';      // Lo que se muestra en la pantalla
+    let primerOperador= null;
+    let operador= null;
+    let esperandoSegundoOperador = false;
     
     // para actualizar el display
     function updateDisplay() {
@@ -33,6 +36,61 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     updateDisplay();
     }
+
+    // Función para realizar la operación
+    function calcular() {
+        if (operador && primerOperador !== null) {
+            const segundoOperador = parseFloat(entradaActual);
+            let resultado = 0;
+            switch (operador) {
+                case '+':
+                    resultado = primerOperador + segundoOperador;
+                    break;
+                case '-':
+                    resultado = primerOperador - segundoOperador;
+                    break;
+                case '*':
+                    resultado = primerOperador * segundoOperador;
+                    break;
+                case '/':
+                    if (segundoOperador === 0) {
+                        entradaActual = 'Error';
+                        updateDisplay();
+                        return;
+                    } else {
+                        resultado = primerOperador / secondOperand;
+                    }
+                    break;
+                case 'power':
+                    resultado = Math.pow(primerOperador, segundoOperador);
+                    break;
+            }
+            entradaActual = resultado.toString();
+            primerOperador = null;
+            operador = null;
+            esperandoSegundoOperador = false;
+            updateDisplay();
+        }
+    }
+
+    // para introducir los operadores
+    function setOperator(op) {
+        if (esperandoSegundoOperador) {
+            // Si ya hay un primer operando y se presiona otro operador, calcular primero
+            calcular();
+        }
+        primerOperador = parseFloat(entradaActual);
+        operador = op;
+        esperandoSegundoOperador = true;
+        entradaActual = '0';
+    }
+
+    //para el boton igual
+    function igual() {
+        if (operador) {
+            calcular();
+        }
+    }
     
     // para asignar los numeros a los botones
     botones.forEach(btn => {
@@ -44,7 +102,17 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', () => {
                 introducirNumero(id);
             });       
-        }
+        }else if (classList.contains('operador')) {
+            // Operadores
+            const op = btn.getAttribute('data-op');
+            btn.addEventListener('click', () => {
+                setOperator(op);
+            });
+        }else if (id === 'igual') {
+        btn.addEventListener('click', () => {
+            igual();
+        });}
+
     });
 
 
