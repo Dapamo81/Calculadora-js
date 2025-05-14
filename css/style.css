@@ -1,0 +1,94 @@
+ body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+    /* Botón para mostrar/ocultar */
+  #botonMostrar {
+    padding: 12px 24px;
+    font-size: 1em;
+    background-color: #0078D7; /* azul similar a Windows */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.3s;
+  }
+
+  #botonMostrar {
+    background-color: #005a9e;
+  }
+/* Contenedor calculadora*/
+  .calculadora-container {
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+}
+
+  /* Contenedor calculadora visible */
+  .calculadora-container.show {
+    max-height: 600px; /* suficiente para la calculadora */
+    opacity: 1;
+  }
+
+  /* Estilo de la calculadora */
+  .calculadora {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .display {
+    background-color: #222;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    font-size: 2em;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: right;
+    overflow-x: auto;
+    margin-bottom: 10px;
+  }
+
+  .botones{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  button {
+    padding: 14px;
+    font-size: 1em;
+    border: none;
+    border-radius: 6px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.2s;
+  }
+
+  button:hover {
+    background-color: #e0e0e0;
+  }
+  /* Colores específicos */
+  .limpiar {
+    background-color: #e74c3c;
+    color: white;
+  }
+
+  .igual {
+    background-color: #27ae60;
+    color: white;
+  }
